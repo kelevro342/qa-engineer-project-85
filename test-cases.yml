@@ -1,0 +1,89 @@
+---
+- summary: |
+    Регистрация нового пользователя
+  requirement: |
+    При верном вводе данных на странице регистрации пользователь должен получить сообщение об успешной регистрации
+  prerequisites: |
+   Открыта страница https://codebattle.hexlet.io/
+  test-data: |
+    nickname = kelevro
+    email = kelevro342@mail.ru
+    password = interarma342!
+    password confirmation = interarma342!
+  steps:
+    - Нажимаем кнопку "Sign Up"
+    - Вводим nickname"
+    - Вводим "email"
+    - Вводим "password"
+    - Вводим "password confirmation"
+    - Нажимаем кнопку "Submit"
+  expected-result: |
+    Пользователь должен получить сообщение об успешной регистрации
+
+    ---
+- summary: |
+    Регистрация нового пользователя с занятым nickname
+  requirement: |
+    При вводе занятого nickname должно прийти уведомление "nickname is already taken"
+  prerequisites: |
+   Открыта страница https://codebattle.hexlet.io/
+  test-data: |
+    nickname = kelevro
+    email = kel342@mail.ru
+    password = interarma342!
+    password confirmation = interarma342!
+  steps:
+    - Нажимаем кнопку "Sign Up"
+    - Вводим nickname"
+    - Вводим "email"
+    - Вводим "password"
+    - Вводим "password confirmation"
+    - Нажимаем кнопку "Submit"
+  expected-result: |
+     Должно появиться уведомление "nickname is already taken"
+
+- summary: |
+    Регистрация нового пользователя с занятым email
+  requirement: |
+    При вводе занятого email должно прийти уведомление "email is already taken"
+  prerequisites: |
+   Открыта страница https://codebattle.hexlet.io/
+  test-data: |
+    nickname = kel
+    email = kelevro342@mail.ru
+    password = interarma342!
+    password confirmation = interarma342!
+  steps:
+    - Нажимаем кнопку "Sign Up"
+    - Вводим nickname"
+    - Вводим "email"
+    - Вводим "password"
+    - Вводим "password confirmation"
+    - Нажимаем кнопку "Submit"
+  expected-result: |
+    Должно появиться уведомление "email is already taken"
+
+    - summary: |
+    Регистрация нового пользователя с несуществуюшим email
+  requirement: |
+    
+  prerequisites: |
+   Открыта страница https://codebattle.hexlet.io/
+  test-data: |
+    nickname = kel
+    email = kelevro342@mail.ru
+    password = interarma342!
+    password confirmation = interarma342!
+  steps:
+    - Нажимаем кнопку "Sign Up"
+    - Вводим nickname"
+    - Вводим "email"
+    - Вводим "password"
+    - Вводим "password confirmation"
+    - Нажимаем кнопку "Submit"
+  expected-result: |
+    Должно появиться уведомление "email is already taken"
+
+    
+
+    
