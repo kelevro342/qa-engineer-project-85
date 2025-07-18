@@ -1,2 +1,1 @@
-### Hexlet tests and linter status:
-[![Actions Status](https://github.com/kelevro342/qa-engineer-project-85/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/kelevro342/qa-engineer-project-85/actions)
+Тестируемый проект Codebattle. Это игра в которой два программиста одновременно выполняют задачу на скорость. В игру можно играть с любым человеком или ботом. Можно выбирать уровень сложности и саму игру. Задачи на двух языках, русском и английском. Завершенная игра доступна в записи. В игре есть рейтинг и очки.
