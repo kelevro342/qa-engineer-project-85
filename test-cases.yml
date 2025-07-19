@@ -163,9 +163,9 @@
     Должно прийти сообщение "nickname is already taken". Регистрация не пройдена
 
 - summary: |
-    Проверка входа пользователя с несуществующими email и паролем
+    Проверка входа пользователя с незарегистрированным email
     requirement: |
-    При неправильном email или пароле пользователь должен увидеть сообщение "email not found"
+    При неправильном email пользователь должен увидеть сообщение "email not found"
   prerequisites:
    https://codebattle.hexlet.io/session/new?locale=en&next=%2F
   test-data: |
@@ -176,7 +176,7 @@
     - Ввести Password
     - Нажать кнопку «Submit»
   expected-result: |
-    Пользователь должен увидеть сообщение "email not found". Регистрация не пройдена
+    Пользователь должен увидеть сообщение "email not found". 
 
 - summary: |
     Проверка восстановления пароля
