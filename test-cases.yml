@@ -4,7 +4,7 @@
   requirement: |
     При верном вводе данных на странице регистрации пользователь должен получить сообщение об успешной регистрации
   prerequisites: |
-   Открыта страница https://codebattle.hexlet.io/
+   Открыта страница https://codebattle.hexlet.io/users/new?locale=en&next=%2F
   test-data: |
     nickname = kelevro
     email = kelevro342@mail.ru
@@ -26,7 +26,7 @@
   requirement: |
     При вводе занятого nickname должно прийти уведомление "nickname is already taken"
   prerequisites: |
-   Открыта страница https://codebattle.hexlet.io/
+   Открыта страница https://codebattle.hexlet.io/users/new?locale=en&next=%2F
   test-data: |
     nickname = kelevro
     email = kel342@mail.ru
@@ -47,7 +47,7 @@
   requirement: |
     При вводе занятого email должно прийти уведомление "email is already taken"
   prerequisites: |
-   Открыта страница https://codebattle.hexlet.io/
+   Открыта страница https://codebattle.hexlet.io/users/new?locale=en&next=%2F
   test-data: |
     nickname = kel
     email = kelevro342@mail.ru
@@ -63,15 +63,15 @@
   expected-result: |
     Должно появиться уведомление "email is already taken"
 
-    - summary: |
+- summary: |
     Регистрация нового пользователя с несуществуюшим email
   requirement: |
-    
+    При вводе несуществующего email должно прийти уведомление "invalid email"
   prerequisites: |
-   Открыта страница https://codebattle.hexlet.io/
+   Открыта страница https://codebattle.hexlet.io/users/new?locale=en&next=%2F
   test-data: |
     nickname = kel
-    email = kelevro342@mail.ru
+    email = kelevro342@ds.nik
     password = interarma342!
     password confirmation = interarma342!
   steps:
@@ -82,7 +82,307 @@
     - Вводим "password confirmation"
     - Нажимаем кнопку "Submit"
   expected-result: |
-    Должно появиться уведомление "email is already taken"
+    Должно появиться уведомление "invalid email"
+
+- summary: |
+    Проверка невозможности ввода пробелов в начале email при регистрации
+  requirement: |
+    При вводе пробелов в начале email должно прийти уведомление "invalid email"
+  prerequisites: |
+   Открыта страница https://codebattle.hexlet.io/users/new?locale=en&next=%2F
+  test-data: |
+    nickname = kel
+    email = "   kelevro342@mail.ru"
+    password = interarma342!
+    password confirmation = interarma342!
+  steps:
+    - Вводим nickname"
+    - Вводим "email"
+    - Вводим "password"
+    - Вводим "password confirmation"
+    - Нажимаем кнопку "Submit"
+  expected-result: |
+    Должно появиться уведомление "invalid email"
+
+- summary: |
+    Проверка входа пользователя с существующими email и паролем
+  requirement: |
+    При правильном email или пароле пользователь должен войти в аккаунт
+  prerequisites:
+   https://codebattle.hexlet.io/session/new?locale=en&next=%2F
+  test-data: |
+    Email = kelevro342@mail.ru
+    Password = interarma342!
+  steps:
+    - Ввести Email
+    - Ввести Password
+    - Нажать кнопку «Submit»
+  expected-result: |
+    Пользователь должен попасть на главную страницу
+
+- summary: |
+    Проверка входа пользователя с несуществующими email и паролем
+    requirement: |
+    При неправильном email или пароле пользователь должен увидеть сообщение "email not found"
+  prerequisites:
+   https://codebattle.hexlet.io/session/new?locale=en&next=%2F
+  test-data: |
+    Email = kelevrouy342@mail.ru
+    Password = interarma342!
+  steps:
+    - Ввести Email
+    - Ввести Password
+    - Нажать кнопку «Submit»
+  expected-result: |
+    Пользователь должен увидеть сообщение "email not found"
+
+- summary: |
+    Проверка восстановления пароля
+    requirement: |
+    Пользователь должен иметь возможность восстановить пароль
+  prerequisites:
+   https://codebattle.hexlet.io/session/new?locale=en&next=%2F
+  test-data: |
+    email = kelevro342@mail.ru
+  steps:
+    - Нажать "Forgot your password?"
+    - Ввести email
+    - Нажать кнопку «Submit»
+  expected-result: |
+   Пользователь получит писмьо на свой email с инструкцией по восстановлению пароля
+
+- summary: |
+    Проверка входа пользователя через Github
+  requirement: |
+    При использовании аккаунта Github пользователь должен авторизоваться на сайте
+  prerequisites:
+    Пользователь должен иметь учетную записть в Github
+  test-data: |
+    No data
+  steps:
+    - Нажать кнопку «Sign in»
+    - Нажать кнопку «Sigh in with Github»
+    - Ввести данные Githab в открывшемся окне
+  expected-result: |
+    Пользователь должен попасть на главную страницу
+
+- summary: |
+    Проверка входа пользователя через Discord
+  requirement: |
+    При использовании аккаунта Discord пользователь должен авторизоваться на сайте
+  prerequisites:
+    Пользователь должен иметь учетную записть в Discord
+  test-data: |
+    No data
+  steps:
+    - Нажать кнопку «Sign in»
+    - Нажать кнопку «Sigh in with Discord»
+    - Ввести данные Discord в открывшемся окне
+  expected-result: |
+    Пользователь должен попасть на главную страницу
+
+- summary: |
+    Проверка невозможности ввода пробелов в начале nickname при регистрации
+  requirement: |
+    При вводе пробелов в начале nickname должно прийти уведомление "Can't start or end with empty symbols"
+  prerequisites: |
+   Открыта страница https://codebattle.hexlet.io/users/new?locale=en&next=%2F
+  test-data: |
+    nickname = "   kel"
+    email = "   kelevro342@mail.ru"
+    password = interarma342!
+    password confirmation = interarma342!
+  steps:
+    - Вводим nickname"
+    - Вводим "email"
+    - Вводим "password"
+    - Вводим "password confirmation"
+    - Нажимаем кнопку "Submit"
+  expected-result: |
+    Должно появиться уведомление "Can't start or end with empty symbols"
+
+- summary: |
+    Проверка невозможности ввода цифр в начале nickname при регистрации
+  requirement: |
+    При вводе цифр в начале nickname должно прийти уведомление "Must consist of Latin letters, numbers and underscores. Only begin with latin letter"
+  prerequisites: |
+   Открыта страница https://codebattle.hexlet.io/users/new?locale=en&next=%2F
+  test-data: |
+    nickname = "123kel"
+    email = "   kelevro342@mail.ru"
+    password = interarma342!
+    password confirmation = interarma342!
+  steps:
+    - Вводим nickname"
+    - Вводим "email"
+    - Вводим "password"
+    - Вводим "password confirmation"
+    - Нажимаем кнопку "Submit"
+  expected-result: |
+    Должно появиться уведомление "Must consist of Latin letters, numbers and underscores. Only begin with latin letter"
+
+- summary: |
+    Проверка невозможности ввода букв кириллицы nickname при регистрации
+  requirement: |
+    При вводе букв кириллицы в nickname должно прийти уведомление "Must consist of Latin letters, numbers and underscores. Only begin with latin letter"
+  prerequisites: |
+   Открыта страница https://codebattle.hexlet.io/users/new?locale=en&next=%2F
+  test-data: |
+    nickname = "йцуке"
+    email = "   kelevro342@mail.ru"
+    password = interarma342!
+    password confirmation = interarma342!
+  steps:
+    - Вводим nickname"
+    - Вводим "email"
+    - Вводим "password"
+    - Вводим "password confirmation"
+    - Нажимаем кнопку "Submit"
+  expected-result: |
+    Должно появиться уведомление "Must consist of Latin letters, numbers and underscores. Only begin with latin letter"
+
+- summary: |
+    Запуск игры незарегистрированным пользователем 
+  requirement: |
+    Пользователь должен иметь возможность запустить игру без авторизации на сайте
+  prerequisites: |
+    no data
+  test-data: |
+    no data
+  steps:
+    - Нажать кнопку «Try simple battle»
+  expected-result: |
+    Должна открыться новая игра с ботом
+
+- summary: |
+    Создание новой игры с другим пользователем
+  requirement: |
+    Пользователь должен иметь возможность создать новую игру с другим пользователем
+  prerequisites:
+    Пользователь авторизован
+  test-data: |
+    No data
+  steps:
+    - Нажать кнопку «Create game»
+    - Нажать кнопку «Create battle»
+  expected-result: |
+    Должна быть создана новая игра
+
+- summary: |
+    Приглашение друга в новую игру
+  requirement: |
+    Пользователь должен пригласить друга в новую игру
+  prerequisites:
+    Пользователь авторизован
+  test-data: |
+    No data
+  steps:
+    - Нажать кнопку «Create game»
+    - Нажать кнопку «With a friend»
+    - Нажать кнопку "Greate invite"
+  expected-result: |
+    Друг должен получить приглашение в новую игру
+
+    
+- summary: |
+    Создание новой игры с ботом авторизованным пользователем
+  requirement: |
+    Пользователь должен иметь возможность создать новую игру c  ботом
+  prerequisites:
+    Пользователь авторизован
+  test-data: |
+    No data
+  steps:
+    - Нажать кнопку «Create game»
+    - Нажать кнопку "With a bot"
+    - Нажать кнопку «Create battle»
+  expected-result: |
+    Должна быть создана новая игра c ботом
+
+- summary: |
+    Завершение созданной игры
+  requirement: |
+    Пользователь должен иметь возможность завершить созданную игру
+  prerequisites:
+    Пользователь авторизован
+  test-data: |
+    No data
+  steps:
+    - Нажать кнопку «Create game»
+    - Нажать кнопку "With a bot"
+    - Нажать кнопку «Create battle»
+    - Нажать кнопку "Other actions"
+    - Нажать кнопку "Give up"
+    - В появившемся окне нажать "Give up"
+  expected-result: |
+    Игра должна завершиться
+
+- summary: |
+    Выбор сложности игры при создании игры
+  requirement: 
+    Пользователь должен иметь возможность выбрать сложность игры
+  prerequisites:
+    Пользователь авторизован
+  test-data: |
+    No data
+  steps:
+    - Нажать кнопку «Create game»
+    - Нажать кнопку уровня игры
+    - Нажать кнопку «Create battle»
+  expected-result: |
+    Должна быть создана новая игра с выбранным уровнем
+
+- summary: |
+    Выбор продолжительности игры
+  requirement: 
+    Пользователь должен иметь возможность выбрать продолжительность игры
+  prerequisites:
+    Пользователь авторизован
+  test-data: |
+    No data
+  steps:
+    - Нажать кнопку «Create game»
+    - Выбрать продолжительность игры
+    - Нажать кнопку «Create battle»
+  expected-result: |
+    Должна быть создана новая игра с выбранной продолжительностью
+
+- summary: |
+    Выбор задачи по названию
+  requirement: 
+    Пользователь должен иметь возможность выбрать задачу по названию
+  prerequisites:
+    Пользователь авторизован
+  test-data: |
+    No data
+  steps:
+    - Нажать кнопку «Create game»
+    - Выбрать с помощью меню решаемую задачу
+    - Нажать кнопку «Create battle»
+  expected-result: |
+    Должна быть создана новая игра с выбранной задачей
+
+    - summary: |
+    Выбор задачи по тегу
+  requirement: 
+    Пользователь должен иметь возможность выбрать задачу по тегу
+  prerequisites:
+    Пользователь авторизован
+  test-data: |
+    No data
+  steps:
+    - Нажать кнопку «Create game»
+    - Выбрать с помощью тега задачу
+    - Нажать кнопку «Create battle»
+  expected-result: |
+    Должна быть создана новая игра с выбранной задачей
+
+
+    
+
+    
+
+    
 
     
 
