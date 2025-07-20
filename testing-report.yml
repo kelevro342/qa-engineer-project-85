@@ -3,155 +3,155 @@
     Проверка успешной регистрации нового пользователя
   status: pass
 
-  - summary: |
+- summary: |
     Проверка невозможности регистрации нового пользователя с занятым nickname
   status: pass
 
-  - summary: |
+- summary: |
     Проверка невозможности регистрации нового пользователя с занятым email
   status: pass
 
-  - summary: |
+- summary: |
     Проверка невозможности регистрации нового пользователя с несуществуюшим email
   status: fail
 
-  - summary: |
+- summary: |
     Проверка успешного входа пользователя с существующими email и паролем
   status: pass
 
-  - summary: |
+- summary: |
     Проверка невозможности регистрации с уже зарегестрированным email
   status: pass
 
-  - summary: |
+- summary: |
      проверка невозможности регистрации с уже зарегестрированным nickname
   status: pass
 
-  - summary: |
+- summary: |
     Проверка входа пользователя с незарегистрированным email
   status: pass
 
-  - summary: |
+- summary: |
     Проверка входа пользователя через Github
   status: pass
 
-  - summary: |
+- summary: |
     Проверка входа пользователя через Discord
   status: pass
 
-  - summary: |
+- summary: |
     Проверка невозможности ввода пробелов в начале nickname при регистрации
   status: pass
 
-  - summary: |
+- summary: |
     Проверка невозможности ввода цифр в начале nickname при регистрации
   status: pass
 
-  - summary: |
+- summary: |
     Проверка невозможности ввода букв кириллицы nickname при регистрации
   status: pass
 
-  - summary: |
+- summary: |
     Проверка невозможности регистрации при не заполненных полях в форме регистрации
   status: pass
 
-  - summary: |
+- summary: |
     Проверка запуска игры незарегистрированным пользователем 
   status: pass
 
-  - summary: |
+- summary: |
     Проверка создания новой игры с другим пользователем
   status: pass
 
-  - summary: |
+- summary: |
     Проверка приглашения друга в новую игру
   status: pass
 
-  - summary: |
+- summary: |
     Проверка создания новой игры с ботом, авторизованным пользователем
   status: pass
 
-  - summary: |
+- summary: |
     Проверка возможности сдачи в игре
   status: pass
 
-  - summary: |
+- summary: |
     Проверка выбора сложности игры при создании игры
   status: pass
 
-  - summary: |
+- summary: |
      Проварка выбора продолжительности игры
   status: pass
 
-  - summary: |
+- summary: |
     Проверка выбора задачи по названию
   status: pass
 
-  - summary: |
+- summary: |
     Проверка выбор задачи по тегу
   status: pass
 
-  - summary: |
+- summary: |
      Проверка успешного подключения другого пользователя к созданной игре
   status: pass
 
-  - summary: |
+- summary: |
    Проверка успешного создания игры с максимально заданным временем
   status: pass
 
-  - summary: |
+- summary: |
     Проверка успешного создания игры с минимально заданным временем
   status: pass
 
-  - summary: |
+- summary: |
     Проверка возможности выбора языка программирования
   status: pass
 
-  - summary: |
+- summary: |
    Проверка невозможности просмотра профиля, без авторизации
   status: pass
 
-  - summary: |
+- summary: |
     Проверка успешного завершения игры при правильном решении
   status: pass
 
-  - summary: |
+- summary: |
     Проверка ошибки завершения игры при неправильном решении
   status: pass
 
-  - summary: |
+- summary: |
      Проверка на возможность просмотра профиля пользователя
   status: pass
 
-  - summary: |
+- summary: |
     Проверка на адаптивность под мобильные устройства
   status: pass
 
-  - summary: |
+- summary: |
     Проверка входа с Firefox browser
   status: pass
 
-  - summary: |
+- summary: |
     Проверка входа с Opera One
   status: pass
 
-  - summary: |
+- summary: |
     Проверка на отсутсвие ошибок при загрузке страницы 
   status: pass
 
-  - summary: |
+- summary: |
    Проверка на возможность просмотра рейтинга всех игроков
   status: pass
 
-  - summary: |
+- summary: |
     Проверка просмотра истории всех игр
   status: pass
 
-  - summary: |
+- summary: |
     Проверка просмотра игр в записи
   status: pass
 
-  - summary: |
+- summary: |
     Проверка на оптимизацию скорости работы на персональном компьютере
   status: pass
 
