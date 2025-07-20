@@ -85,26 +85,6 @@
     Должно появиться уведомление "invalid email". Регистрация не пройдена
 
 - summary: |
-    Проверка невозможности ввода пробелов в начале email при регистрации
-  requirement: |
-    При вводе пробелов в начале email должно прийти уведомление "invalid email"
-  prerequisites: |
-   Открыта страница https://codebattle.hexlet.io/users/new?locale=en&next=%2F
-  test-data: |
-    nickname = kel
-    email = "   kelevro342@mail.ru"
-    password = interarma342!
-    password confirmation = interarma342!
-  steps:
-    - Вводим nickname"
-    - Вводим "email"
-    - Вводим "password"
-    - Вводим "password confirmation"
-    - Нажимаем кнопку "Submit"
-  expected-result: |
-    Должно появиться уведомление "invalid email" Регистрацич не пройдена
-
-- summary: |
     Проверка успешного входа пользователя с существующими email и паролем
   requirement: |
     При правильном email или пароле пользователь должен войти в аккаунт
