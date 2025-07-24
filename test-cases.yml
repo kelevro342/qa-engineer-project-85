@@ -2,12 +2,12 @@
 - summary: |
     Проверка успешной регистрации нового пользователя
   requirement: |
-    При верном вводе данных на странице регистрации пользователь должен получить сообщение об успешной регистрации
+    При верном вводе данных пользователь должен зарегистрироваться 
   prerequisites: |
    Открыта страница https://codebattle.hexlet.io/users/new?locale=en&next=%2F
   test-data: |
-    nickname = kelevro
-    email = kelevro342@mail.ru
+    nickname = вводим новый 
+    email = вводим новый
     password = interarma342!
     password confirmation = interarma342!
   steps:
@@ -18,7 +18,7 @@
     - Вводим "password confirmation"
     - Нажимаем кнопку "Submit"
   expected-result: |
-    Пользователь должен получить сообщение об успешной регистрации
+    Открыта главная страница, отображается nickname пользоваетеля
 
 - summary: |
     Проверка невозможности регистрации нового пользователя с занятым nickname
@@ -86,63 +86,22 @@
 - summary: |
     Проверка успешного входа пользователя с существующими email и паролем
   requirement: |
-    При правильном email или пароле пользователь должен войти в аккаунт
+    При правильном email или пароле пользователь должен войти на сайт
   prerequisites:
-   https://codebattle.hexlet.io/session/new?locale=en&next=%2F
+   https://codebattle.hexlet.io/
   test-data: |
     Email = kelevro342@mail.ru
     Password = interarma342!
   steps:
+    - Нажать Sign in
     - Ввести Email
     - Ввести Password
-    - Нажать кнопку «Submit»
+    - Нажать кнопку Submit
   expected-result: |
-    Пользователь должен попасть на главную страницу
+    Открыта главная страница, отображается nickname пользоваетеля
 
 - summary: |
-    Проверка невозможности регистрации с уже зарегестрированным email
-  requirement: |
-    Нельзя регистрироваться с уже ранее зарегистрированным email
-  prerequisites: |
-    Пользователь уже зарегистрирован с email = kelevro342@mail.ru
-    Открыта страница регистрации
-  test-data: |
-    логин = kelevro342
-    email = kelevro342@mail.ru
-    пароль = interarma342!
-    password confirmation = interarma342!
-  steps: 
-    - Вводим логин
-    - Вводим email
-    - Вводим пароль
-    - Вводим подтверждения пароля
-    - Нажать Submit
-  expected-result: |
-    Должно прийти сообщение "email is already taken". Регистрация не пройдена
-
-- summary: |
-    проверка невозможности регистрации с уже зарегестрированным nickname
-  requirement: |
-    Нельзя регистрироваться с уже ранее зарегистрированным nikname
-  prerequisites: |
-    Пользователь уже зарегистрирован с nickname = kelevro342
-    Открыта страница регистрации
-  test-data: |
-    логин = kelevro342
-    email = kelevro342@mail.ru
-    пароль = interarma342!
-    password confirmation = interarma342!
-  steps: 
-    - Вводим логин
-    - Вводим email
-    - Вводим пароль
-    - Вводим подтверждения пароля
-    - Нажать Submit
-  expected-result: |
-    Должно прийти сообщение "nickname is already taken". Регистрация не пройдена
-
-- summary: |
-    Проверка входа пользователя с незарегистрированным email
+    Проверка невозможности входа пользователя с незарегистрированным email
   requirement: |
     При неправильном email пользователь должен увидеть сообщение "email not found"
   prerequisites:
@@ -155,7 +114,23 @@
     - Ввести Password
     - Нажать кнопку «Submit»
   expected-result: |
-    Пользователь должен увидеть сообщение "email not found". 
+    Пользователь должен увидеть сообщение "email not found"
+
+- summary: |
+    Проверка невозможности входа пользователя с неправильным паролем
+  requirement: |
+    Пользователь не должени авторизоваться при неправильном вводе пароля
+  prerequisites:
+   https://codebattle.hexlet.io/session/new?locale=en&next=%2F
+  test-data: |
+    Email = kelevrouy342@mail.ru
+    Password = interarm
+  steps:
+    - Ввести Email
+    - Ввести Password
+    - Нажать кнопку «Submit»
+  expected-result: |
+    Пользователь должен увидеть сообщение "Invalid password"
 
 - summary: |
     Проверка восстановления пароля
@@ -169,8 +144,12 @@
     - Нажать "Forgot your password?"
     - Ввести email
     - Нажать кнопку «Submit»
+    - Открыть указанный email
+    - Открыть письмо с высланной ссылкой
+    - Открыть ссылку
+    - Ввести новый пароль
   expected-result: |
-   Пользователь получит писмьо на свой email с инструкцией по восстановлению пароля
+   Открывается окно Password changed
 
 - summary: |
     Проверка входа пользователя через Github
@@ -185,7 +164,7 @@
     - Нажать кнопку «Sigh in with Github»
     - Ввести данные Githab в открывшемся окне
   expected-result: |
-    Пользователь должен попасть на главную страницу
+    Открыта главная страница, отображается nickname пользоваетеля
 
 - summary: |
     Проверка входа пользователя через Discord
@@ -200,7 +179,7 @@
     - Нажать кнопку «Sigh in with Discord»
     - Ввести данные Discord в открывшемся окне
   expected-result: |
-    Пользователь должен попасть на главную страницу
+    Открыта главная страница, отображается nickname пользоваетеля
 
 - summary: |
     Проверка невозможности ввода пробелов в начале nickname при регистрации
@@ -280,7 +259,7 @@
   requirement: |
     Пользователь должен иметь возможность запустить игру без авторизации на сайте
   prerequisites: |
-    no data
+    Открыта страница https://codebattle.hexlet.io/
   test-data: |
     no data
   steps:
@@ -293,7 +272,8 @@
   requirement: |
     Пользователь должен иметь возможность создать новую игру с другим пользователем
   prerequisites:
-    Пользователь авторизован
+     Пользователь авторизован
+     Открыта страница https://codebattle.hexlet.io/#lobby
   test-data: |
     No data
   steps:
@@ -308,6 +288,7 @@
     Пользователь должен пригласить друга в новую игру
   prerequisites:
     Пользователь авторизован
+    Открыта страница https://codebattle.hexlet.io/#lobby
   test-data: |
     No data
   steps:
@@ -323,6 +304,7 @@
     Пользователь должен иметь возможность создать новую игру c  ботом
   prerequisites:
     Пользователь авторизован
+    Открыта страница https://codebattle.hexlet.io/#lobby
   test-data: |
     No data
   steps:
@@ -338,6 +320,7 @@
     Пользователь должен иметь возможность сдаться в игре
   prerequisites:
     Пользователь авторизован
+    Открыта страница https://codebattle.hexlet.io/#lobby
   test-data: |
     No data
   steps:
@@ -356,6 +339,7 @@
     Пользователь должен иметь возможность выбрать сложность игры
   prerequisites:
     Пользователь авторизован
+    Открыта страница https://codebattle.hexlet.io/#lobby
   test-data: |
     No data
   steps:
@@ -371,6 +355,7 @@
     Пользователь должен иметь возможность выбрать продолжительность игры
   prerequisites:
     Пользователь авторизован
+    Открыта страница https://codebattle.hexlet.io/#lobby
   test-data: |
     No data
   steps:
@@ -386,6 +371,7 @@
     Пользователь должен иметь возможность выбрать задачу по названию
   prerequisites:
     Пользователь авторизован
+    Открыта страница https://codebattle.hexlet.io/#lobby
   test-data: |
     No data
   steps:
@@ -401,6 +387,7 @@
     Пользователь должен иметь возможность выбрать задачу по тегу
   prerequisites:
     Пользователь авторизован
+    Открыта страница https://codebattle.hexlet.io/#lobby
   test-data: |
     No data
   steps:
@@ -433,7 +420,8 @@
   requirement: |
     Игра должна успешно создаваться с заданным промежутком времени
   prerequisites: |
-    Пользователь авторизован, открыта главная страница
+    Пользователь авторизован
+    Открыта страница https://codebattle.hexlet.io/#lobby
   test-data: |
     time control = 60 min
   steps: 
@@ -452,7 +440,8 @@
   requirement: |
     Игра должна успешно создаваться с заданным промежутком времени
   prerequisites: |
-    Пользователь авторизован, открыта главная страница
+    Пользователь авторизован
+    Открыта страница https://codebattle.hexlet.io/#lobby
   test-data: |
     time control = 3 min
   steps: 
@@ -527,7 +516,8 @@
   requirement: |
     Пользователь должен иметь возможность просматривать информацию о своём профиле
   prerequisites: |
-    Открыта главная страница, пользователь авторизован
+    Пользователь авторизован
+    Открыта страница https://codebattle.hexlet.io/#lobby
   test-data: |
     none
   steps: 
@@ -601,6 +591,7 @@
   requirement: |
     Пользователь должен иметь возможность просматривать рейтинг всех игроков
   prerequisites: |
+    Пользователь авторизован
     Открыта страница https://codebattle.hexlet.io/#lobby
   test-data: |
     none
@@ -614,6 +605,7 @@
   requirement: |
     Пользователь должен иметь возможность просматривать историю всех игр
   prerequisites: |
+    Пользователь авторизован
     Открыта страница https://codebattle.hexlet.io/#lobby
   test-data: |
     none
@@ -627,6 +619,7 @@
   requirement: |
     Пользователь должен иметь возможность просматривать запись игр
   prerequisites: |
+    Пользователь авторизован
     Открыта страница https://codebattle.hexlet.io/#lobby
   test-data: |
     none
@@ -642,7 +635,8 @@
   requirement: |
     Сайт должен быть оптимизирован на высокую скорость работы
   prerequisites: |
-    Открыта главная страница
+    Пользователь авторизован
+    Открыта страница https://codebattle.hexlet.io/#lobby
   test-data: |
     none
   steps: 
