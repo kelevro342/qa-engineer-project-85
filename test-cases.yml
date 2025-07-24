@@ -144,7 +144,7 @@
 
 - summary: |
     Проверка входа пользователя с незарегистрированным email
-    requirement: |
+  requirement: |
     При неправильном email пользователь должен увидеть сообщение "email not found"
   prerequisites:
    https://codebattle.hexlet.io/session/new?locale=en&next=%2F
@@ -160,7 +160,7 @@
 
 - summary: |
     Проверка восстановления пароля
-    requirement: |
+  requirement: |
     Пользователь должен иметь возможность восстановить пароль
   prerequisites:
    https://codebattle.hexlet.io/session/new?locale=en&next=%2F
@@ -336,7 +336,7 @@
 
 - summary: |
     Проверка возможности сдачи в игре
-    requirement: |
+  requirement: |
     Пользователь должен иметь возможность сдаться в игре
   prerequisites:
     Пользователь авторизован
